@@ -1,0 +1,291 @@
+* {
+  margin: none;
+  padding: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+html {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: white;
+}
+
+.scroll-bar_track {
+  position: fixed;
+  top: 40px;
+  bottom: 5px;
+  right: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  height: calc(100% - 35px - 10px);
+  width: 12px;
+  z-index: 99;
+  background-color: #00000044;
+  border-radius: 6px;
+  opacity: 1;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.scroll-bar_track .scroll-bar_thumb {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  background-color: #c0c0c0;
+  border-radius: 6px;
+}
+
+.scroll-bar_track.hidden {
+  -webkit-transform: translateX(calc(100% + 2px));
+          transform: translateX(calc(100% + 2px));
+  opacity: 0;
+}
+
+.title-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #e6e6e6;
+  z-index: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-box-shadow: 0px 1px 2px #00000044;
+          box-shadow: 0px 1px 2px #00000044;
+}
+
+.title-bar * {
+  color: #21242b;
+}
+
+.title-bar .app-fav {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 35px;
+  z-index: 2;
+}
+
+.title-bar .menu {
+  position: relative;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 1fr;
+  height: 35px;
+  background-color: transparent;
+  -webkit-app-region: no-drag;
+}
+
+.title-bar .menu ul {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+  z-index: 2;
+}
+
+.title-bar .menu ul li {
+  position: relative;
+  height: 35px;
+  padding: 0px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0px 0px 0px 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  background-color: transparent;
+}
+
+.title-bar .menu ul li:hover {
+  color: white;
+  background-color: #00aa00;
+}
+
+.title-bar .draggable {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  -webkit-app-region: drag;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.title-bar .title {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto;
+  height: 35px;
+  z-index: -1;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title-bar .caption-btn {
+  position: relative;
+  right: 0;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-app-region: no-drag;
+}
+
+.title-bar .caption-btn .ui_btn {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  right: 0;
+  height: 100%;
+  width: 50px;
+  background-color: transparent;
+  z-index: 2;
+}
+
+.title-bar .caption-btn .ui_btn svg {
+  position: relative;
+  padding: 12px;
+  width: 35px;
+  height: 35px;
+  fill: #21242b;
+  pointer-events: none;
+}
+
+.title-bar .caption-btn .ui_btn:hover {
+  background-color: #00aa00;
+}
+
+.title-bar .caption-btn .ui_btn:hover svg {
+  fill: white;
+}
+
+.title-bar .caption-btn .ui_btn.close:hover {
+  background-color: red;
+}
+
+.title-bar .caption-btn .restore {
+  display: none;
+}
+
+.menu-dropdown {
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 99;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.menu-dropdown ul {
+  list-style: none;
+  -webkit-box-shadow: 1px 1px 2px #00000044;
+          box-shadow: 1px 1px 2px #00000044;
+  margin: 0;
+  padding: 0;
+  background-color: #e6e6e6;
+}
+
+.menu-dropdown ul hr {
+  margin: 4px auto 4px auto;
+  opacity: 0.6;
+  width: 90%;
+}
+
+.menu-dropdown ul li {
+  padding: 5px 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  width: 100px;
+}
+
+.menu-dropdown ul li:hover {
+  background-color: #00aa00;
+  color: white;
+}
+
+.main-container {
+  position: fixed;
+  top: 35px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 35px);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.main-container h2 {
+  position: relative;
+}
+
+.main-container .test {
+  position: relative;
+  width: 100%;
+  height: 2000px;
+  background-color: orange;
+}
+/*# sourceMappingURL=styles.css.map */
